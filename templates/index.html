@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %}Room Scheduler | Home{% endblock %}
+{% block content %} 
+    <div id="login-box">
+        <h3 class="text-center" style="color:white;text-decoration:underline;">Login / Signup</h3>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div><br/>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div><br/>
+        <div class="d-flex justify-content-center">
+            <button id="login" class="btn btn-warning me-2">Login</button>
+            <button id="sign-up" class="btn btn-warning">Sign Up</button>
+        </div>
+    </div>
+    {% if user_token %}
+        <div class="container">
+            <div class="text-end mb-4">
+                <button id="sign-out" class="btn btn-dark">Signout</button>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <p class="fs-4 text-center" style="color:white;">Welcome, {{ user_token.email }}</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="/add/room" class="btn btn-warning btn-lg btn-block" style="marginLauto;display:block;">Add Room</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="/list/room" class="btn btn-warning btn-lg btn-block" style="marginLauto;display:block;">Rooms List</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div><br/>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="/list/booking" class="btn btn-warning btn-lg btn-block" style="marginLauto;display:block;">List Booking</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div><br/>
+            <div class="row mt-3">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="/filter/booking" class="btn btn-warning btn-lg btn-block" style="marginLauto;display:block;">Filter Booking</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div><br/>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="/add/booking" class="btn btn-warning btn-lg btn-block" style="marginLauto;display:block;">Add Booking</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
