@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Room Scheduler | Add Room{% endblock %}
+{% block content %} 
+    <div class="container">
+        <a href="/" class="btn btn-dark" style="float:right; margin-top:1%;">Home</a><br/>
+        <div class="row" style="margin-top:3%;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h3 class="text-center" style="text-decoration:underline;color:white;">Add Room</h3><br/>
+                <form action="/add/room" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" id="name" name="name">
+                    </div><br/>
+                    <input type="submit" value="Add Room" class="btn btn-outline-warning btn-rounded custom-button">
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}
