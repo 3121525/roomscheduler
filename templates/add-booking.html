@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Room Scheduler | Add Booking{% endblock %}
+{% block content %} 
+    <div class="container">
+        <a href="/" class="btn btn-dark" style="float:right; margin-top:1%;">Home</a><br/>
+        <div class="row" style="margin-top:3%;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h3 class="text-center" style="text-decoration:underline;color:white;">Add Booking</h3><br/>
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                    </div>
+                {% endif %}
+                <form action="/add/booking" method="post">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input class="form-control" type="text" id="name" name="customer_name">
+                    </div><br/>
+                    <div class="form-group">
+                        <label>Select Room</label>
+                        <select class="form-control" id="room" name="room">
+                            <option value="">Select</option>
+                            {% for room in rooms %}
+                                <option value="{{ room.id }}">{{ room.name }}</option>
+                            {% endfor %}
+                        </select>                            
+                    </div><br/>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input class="form-control" type="date" id="start_date" name="start_date">
+                    </div><br/>
+                    <div class="form-group">
+                        <label>Start Time</label>
+                        <input class="form-control" type="time" id="start_time" name="start_time">
+                    </div><br/>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input class="form-control" type="date" id="end_date" name="end_date">
+                    </div><br/>
+                    <div class="form-group">
+                        <label>End Time</label>
+                        <input class="form-control" type="time" id="end_time" name="end_time">
+                    </div><br/>
+                    <input type="submit" value="Add Booking" class="btn btn-outline-warning btn-rounded custom-button">
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}
