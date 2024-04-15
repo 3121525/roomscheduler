@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block title %}Room Scheduler | Booking List{% endblock %}
+{% block content %} 
+    <script>
+        function deleteBooking(bookingId) {
+            fetch(`/delete/${bookingId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Reload the page after successful deletion
+                    window.location.reload();
+                } else {
+                    console.error('Failed to delete booking');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting Booking:', error);
+            });
+        }
+    </script>
+    <div class="container">
+        <a href="/" class="btn btn-dark" style="float:right; margin-top:1%;">Home</a><br/>
+        <h3 class="text-center">Booking List</h3>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Customer name</th>
+                <th>Room No.</th>
+                <th>Start date</th>
+                <th>Start time</th>
+                <th>End date</th>
+                <th>End time</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ booking.customer_name }}</td>
+                        <td>{{ booking.room_name }}</td>
+                        <td>{{ booking.start_date }}</td>
+                        <td>{{ booking.start_time }}</td>
+                        <td>{{ booking.end_date }}</td>
+                        <td>{{ booking.endtime }}</td>
+                        <td>
+                            <button onclick="location.href='/edit/booking/{{ booking.id }}'" class="btn btn-outline-primary btn-rounded">Edit</button>
+                            <button onclick="deleteBooking('{{ booking.id }}')" class="btn btn-outline-danger btn-rounded">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+{% endblock %}
